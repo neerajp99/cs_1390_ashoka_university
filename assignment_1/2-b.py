@@ -1,0 +1,26 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import math
+
+# Initialise a rnge between -50, 50
+# x = np.arange(-50, 50, 2)
+# y = np.arange(-50, 50, 2)
+x = np.linspace(-50.0, 50.0, 100)
+y = np.linspace(-50.0, 50.0, 100)
+
+# Creating a meshgrid to  convert x and y from 
+# ( 1 X 100 ) vector to ( 100 X 100 ) matrix.
+[X, Y] = np.meshgrid(x, y) 
+
+# Initialising the cost function given 
+cost_fn = ((1/2)*((np.array(Y - X) ** 2) + (1 - X) ** 2))
+
+figs, axes = plt.subplots(1, 1)
+axes.set_title('Contour Plot of J(w)') 
+axes.set_xlabel('weight vector 1 (w1)') 
+axes.set_ylabel('weight vector 2 (w2)') 
+axes.contourf(X, Y, cost_fn, 10, cmap = 'jet') 
+axes.grid(True)
+plt.show()
+
+# Reference: http://www.adeveloperdiary.com/data-science/how-to-visualize-gradient-descent-using-contour-plot-in-python/
